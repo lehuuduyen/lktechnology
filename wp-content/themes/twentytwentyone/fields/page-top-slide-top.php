@@ -4,7 +4,7 @@ function pageTopSlideTop()
 {
     $metaBox = new_cmb2_box(array(
         'id' => KEY_TOP_SLIDE_TOP . '_box',
-        'title' => 'Top表紙',
+        'title' => 'Banner top',
         'object_types' => POST_TYPE_PAGE,
         'context' => 'normal',
         'priority' => 'default',
@@ -22,7 +22,7 @@ function pageTopSlideTop()
             'show_thumbnails' => true,
             'filter_boxes' => true,
             'query_args' => array(
-                'posts_per_page' => 10,
+                'posts_per_page' => 2,
                 'post_type' => 'post',
                 'post_status' => ['publish'],
                 'cat' => get_cat_ID("project"),

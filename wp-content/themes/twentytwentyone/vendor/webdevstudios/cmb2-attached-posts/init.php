@@ -140,7 +140,7 @@ class WDS_CMB2_Attached_Posts_Field {
 		// Open our retrieved, or found posts, list
 		echo '<div class="retrieved-wrap column-wrap">';
 		// echo '<h4 class="attached-posts-section">' . sprintf( __( 'Available %s', 'cmb' ), $post_type_labels ) . '</h4>';
-        echo '<h4 class="attached-posts-section">' . sprintf( __( '記事一覧', 'cmb' ), $post_type_labels ) . '</h4>';
+        echo '<h4 class="attached-posts-section">' . sprintf( __( 'Available Pages', 'cmb' ), $post_type_labels ) . '</h4>';
 
 		// Set .has_thumbnail
 		$has_thumbnail = $this->field->options( 'show_thumbnails' ) ? ' has-thumbnails' : '';
@@ -183,7 +183,7 @@ class WDS_CMB2_Attached_Posts_Field {
 		// Open our attached posts list
 		echo '<div class="attached-wrap column-wrap">';
 		// echo '<h4 class="attached-posts-section">' . sprintf( __( 'Attached %s', 'cmb' ), $post_type_labels ) . '</h4>';
-        echo '<h4 class="attached-posts-section">' . sprintf( __( '関連記事', 'cmb' ), $post_type_labels ) . '</h4>';
+        echo '<h4 class="attached-posts-section">' . sprintf( __( 'Attached Pages', 'cmb' ), $post_type_labels ) . '</h4>';
 
 		if ( $filter_boxes ) {
 			printf( $filter_boxes, 'attached-search' );
