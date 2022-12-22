@@ -1,0 +1,10 @@
+<?php
+
+function register_option_theme_page()
+{
+    add_menu_page('Top page', 'Top page', 'edit_pages', '/post.php?post=' . getTopPageId() . '&action=edit', null, 'dashicons-list-view', null);
+
+}
+
+add_action('admin_menu', 'register_option_theme_page');
+
