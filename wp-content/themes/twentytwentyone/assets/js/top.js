@@ -18,15 +18,9 @@ jQuery(function ($) {
   }
   let id = getUrlParameter("post");
 
-  $('#pageparentdiv').remove();
   $('#timestamp').remove();
   $('.edit-timestamp').remove();
-  $('#postimagediv').remove();
 
-  
-  $('#post-body-content').remove();
-  $('.wp-heading-inline').remove();
-  $('.page-title-action').remove();
   
   $('li.wp-has-current-submenu').addClass('wp-not-current-submenu').removeClass('wp-has-current-submenu');
   $('a.wp-has-current-submenu').addClass('wp-not-current-submenu').removeClass('wp-has-current-submenu');

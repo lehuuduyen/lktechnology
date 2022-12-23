@@ -22,7 +22,7 @@ function pageTopSlideTop()
             'show_thumbnails' => true,
             'filter_boxes' => true,
             'query_args' => array(
-                'posts_per_page' => 2,
+                'posts_per_page' => 10,
                 'post_type' => 'post',
                 'post_status' => ['publish'],
                 'cat' => get_cat_ID("project"),

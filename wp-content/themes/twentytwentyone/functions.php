@@ -12,12 +12,17 @@
 // This theme requires WordPress 5.3 or later.
 
 define('KEY_TOP_SLIDE_TOP', 'banner_slide_top');
+define('KEY_TOP_SERVICE', 'service_slide_top');
+define('KEY_TOP_PROJECT', 'project_slide_top');
+define('KEY_TOP_NEWS', 'news_slide_top');
+define('KEY_TOP_INFORMATION', 'information_slide_top');
+define('KEY_TOP_CONTACT', 'contact_slide_top');
 define('POST_TYPE', 'post');
 define('POST_TYPE_PAGE', 'page');
 define('VERSION', '1.0.0');
+define('EXCERPT_LENGTH', 40);
 
-require_once(TEMPLATEPATH . '/cores/core.php');
-require_once(TEMPLATEPATH . '/fields/page-schedule-setting.php');
+
 /**
  * Require vendor
  */
@@ -26,11 +31,17 @@ require_once(TEMPLATEPATH . '/vendor/cmb2/cmb2/cmb-field-select2.php');
 require_once(TEMPLATEPATH . '/vendor/cmb2/cmb2/cmb2-field-type-tags.php');
 require_once(TEMPLATEPATH . '/vendor/alexis-magina/cmb2-field-post-search-ajax/cmb-field-post-search-ajax.php');
 require_once(TEMPLATEPATH . '/vendor/webdevstudios/cmb2-attached-posts/cmb2-attached-posts-field.php');
-
+require_once(TEMPLATEPATH . '/cores/core.php');
+require_once(TEMPLATEPATH . '/fields/page-schedule-setting.php');
 
 //page top
 require_once(TEMPLATEPATH . '/registerPage.php');
 require_once(TEMPLATEPATH . '/fields/page-top-slide-top.php');
+require_once(TEMPLATEPATH . '/fields/page-top-service.php');
+require_once(TEMPLATEPATH . '/fields/page-top-information.php');
+require_once(TEMPLATEPATH . '/fields/page-top-project.php');
+require_once(TEMPLATEPATH . '/fields/page-top-news.php');
+require_once(TEMPLATEPATH . '/fields/page-top-contact-group.php');
 
 function getTopPageId() {
     $topPageId = get_option('top_id',true);
