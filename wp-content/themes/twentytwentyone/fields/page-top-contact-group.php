@@ -16,7 +16,8 @@ function pageTopContactGroup()
         'id' => KEY_TOP_CONTACT . '_work_time',
         'type' => 'text',
         'attributes' => array(
-            'data-cmb2-qtranslate' => true
+            'data-cmb2-qtranslate' => true,
+            'class' => 'form-control'
         )
         
     ));
@@ -25,7 +26,8 @@ function pageTopContactGroup()
         'id' => KEY_TOP_CONTACT . '_country',
         'type' => 'text',
         'attributes' => array(
-            'data-cmb2-qtranslate' => true
+            'data-cmb2-qtranslate' => true,
+            'class' => 'form-control'
 
         )
     ));
@@ -47,6 +49,7 @@ function pageTopContactGroup()
         'id' => KEY_TOP_CONTACT . '_title',
         'type' => 'text',
         'attributes' => array(
+            'data-cmb2-qtranslate' => true,
             'class' => 'form-control'
         ),
     ));

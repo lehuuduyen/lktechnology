@@ -18,6 +18,8 @@ jQuery(function ($) {
   }
   let id = getUrlParameter("post");
 
+  $('#timestamp').remove();
+  $('.edit-timestamp').remove();
 
   
   $('li.wp-has-current-submenu').addClass('wp-not-current-submenu').removeClass('wp-has-current-submenu');
@@ -25,26 +27,27 @@ jQuery(function ($) {
   $('li#toplevel_page_post-post-'+id+'-action-edit').addClass('wp-has-current-submenu').removeClass('wp-not-current-submenu');
   $('li#toplevel_page_post-post-'+id+'-action-edit > a').addClass('wp-has-current-submenu').removeClass('wp-not-current-submenu');
 
+ 
 
   //Banner large: Maximum 2 banner
   // $(document).on(
   //   "click",
-  //   '[data-selector="page_top_bannder_ads_large_group_repeat"]',
+  //   '[data-selector="page_partner_bannder_ads_large_group_repeat"]',
   //   function (event) {
   //     var bannerLarge = $(
-  //       "#page_top_bannder_ads_large_group_repeat .cmb-repeatable-grouping"
+  //       "#page_partner_bannder_ads_large_group_repeat .cmb-repeatable-grouping"
   //     ).length;
   //     if (bannerLarge > 1) {
-  //       $("#page_top_bannder_ads_large_group_repeat .cmb-add-group-row").hide();
+  //       $("#page_partner_bannder_ads_large_group_repeat .cmb-add-group-row").hide();
   //     } else {
-  //       $("#page_top_bannder_ads_large_group_repeat .cmb-add-group-row").show();
+  //       $("#page_partner_bannder_ads_large_group_repeat .cmb-add-group-row").show();
   //     }
   //   }
   // );
 
   $(document).on("click", "#publish", function (event) {
     event.preventDefault();
-  
+
     $("form#post").submit();
 
   });

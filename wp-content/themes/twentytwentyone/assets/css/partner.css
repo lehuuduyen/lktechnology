@@ -16,15 +16,14 @@
     height: 34px;
     overflow: hidden;
 }
-
-#adminmenu li.wp-has-current-submenu#menu-pages a.wp-has-current-submenu {
-    background: transparent;
-}
 #advanced-sortables{
     display: none;
 }
 #misc-publishing-actions{
     display: none !important
+}
+#adminmenu li.wp-has-current-submenu#menu-pages a.wp-has-current-submenu {
+    background: transparent;
 }
 
 #adminmenu .wp-has-current-submenu#menu-pages div.wp-menu-image:before {

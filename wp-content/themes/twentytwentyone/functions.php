@@ -11,7 +11,9 @@
 
 // This theme requires WordPress 5.3 or later.
 
+define('KEY_ABOUT_SLIDE', 'about_slide_top');
 define('KEY_TOP_SLIDE_TOP', 'banner_slide_top');
+define('KEY_PARTNER_SLIDE', 'partner_slide');
 define('KEY_TOP_SERVICE', 'service_slide_top');
 define('KEY_TOP_PROJECT', 'project_slide_top');
 define('KEY_TOP_NEWS', 'news_slide_top');
@@ -21,6 +23,7 @@ define('POST_TYPE', 'post');
 define('POST_TYPE_PAGE', 'page');
 define('VERSION', '1.0.0');
 define('EXCERPT_LENGTH', 40);
+define('API_NAME', 'lk_tech');
 
 
 /**
@@ -32,20 +35,38 @@ require_once(TEMPLATEPATH . '/vendor/cmb2/cmb2/cmb2-field-type-tags.php');
 require_once(TEMPLATEPATH . '/vendor/alexis-magina/cmb2-field-post-search-ajax/cmb-field-post-search-ajax.php');
 require_once(TEMPLATEPATH . '/vendor/webdevstudios/cmb2-attached-posts/cmb2-attached-posts-field.php');
 require_once(TEMPLATEPATH . '/cores/core.php');
-require_once(TEMPLATEPATH . '/fields/page-schedule-setting.php');
+require_once(TEMPLATEPATH . '/fields/page-setting-top.php');
+require_once(TEMPLATEPATH . '/fields/page-setting-partner.php');
+require_once(TEMPLATEPATH . '/fields/page-setting-about.php');
+require_once(TEMPLATEPATH . '/registerPage.php');
 
 //page top
-require_once(TEMPLATEPATH . '/registerPage.php');
 require_once(TEMPLATEPATH . '/fields/page-top-slide-top.php');
 require_once(TEMPLATEPATH . '/fields/page-top-service.php');
 require_once(TEMPLATEPATH . '/fields/page-top-information.php');
 require_once(TEMPLATEPATH . '/fields/page-top-project.php');
 require_once(TEMPLATEPATH . '/fields/page-top-news.php');
 require_once(TEMPLATEPATH . '/fields/page-top-contact-group.php');
+// page partner
+require_once(TEMPLATEPATH . '/fields/page-partner-slide.php');
+// page about
+require_once(TEMPLATEPATH . '/fields/page-about-slide.php');
+
+//api 
+require_once(TEMPLATEPATH . '/api/PostController.php');
+require_once(TEMPLATEPATH . '/api/MenuController.php');
 
 function getTopPageId() {
     $topPageId = get_option('top_id',true);
     return $topPageId;
+}
+function getPartnerPageId() {
+    $partnerPageId = get_option('partner_id',true);
+    return $partnerPageId;
+}
+function getAboutPageId() {
+    $aboutPageId = get_option('about_id',true);
+    return $aboutPageId;
 }
 function add_css_js_version( ) {
     $dateNow = date('Y-m-d');
@@ -54,8 +75,15 @@ function add_css_js_version( ) {
 
     return $verDate;
 }
+
 if (isset($_GET['post']) && $_GET['post'] == get_option('top_id',true)) {
     require_once(TEMPLATEPATH . '/styleTop.php');
+}
+if (isset($_GET['post']) && $_GET['post'] == get_option('partner_id',true)) {
+    require_once(TEMPLATEPATH . '/stylePartner.php');
+}
+if (isset($_GET['post']) && $_GET['post'] == get_option('about_id',true)) {
+    require_once(TEMPLATEPATH . '/styleAbout.php');
 }
 if ( version_compare( $GLOBALS['wp_version'], '5.3', '<' ) ) {
 	require get_template_directory() . '/inc/back-compat.php';

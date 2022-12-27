@@ -29,15 +29,15 @@ jQuery(function ($) {
   //Banner large: Maximum 2 banner
   // $(document).on(
   //   "click",
-  //   '[data-selector="page_top_bannder_ads_large_group_repeat"]',
+  //   '[data-selector="page_about_bannder_ads_large_group_repeat"]',
   //   function (event) {
   //     var bannerLarge = $(
-  //       "#page_top_bannder_ads_large_group_repeat .cmb-repeatable-grouping"
+  //       "#page_about_bannder_ads_large_group_repeat .cmb-repeatable-grouping"
   //     ).length;
   //     if (bannerLarge > 1) {
-  //       $("#page_top_bannder_ads_large_group_repeat .cmb-add-group-row").hide();
+  //       $("#page_about_bannder_ads_large_group_repeat .cmb-add-group-row").hide();
   //     } else {
-  //       $("#page_top_bannder_ads_large_group_repeat .cmb-add-group-row").show();
+  //       $("#page_about_bannder_ads_large_group_repeat .cmb-add-group-row").show();
   //     }
   //   }
   // );

@@ -493,7 +493,6 @@ function qtranxf_translate_post($post,$lang) {
 			case 'post_mime_type':
 			case 'comment_count':
 			case 'filter':
-				continue;
 			//known to translate
 			case 'post_content': $post->$key = qtranxf_use_language($lang, $txt, true); break;
 			case 'post_title':
@@ -519,7 +518,7 @@ function qtranxf_translate_post($post,$lang) {
 	}
 }
 
-function qtranxf_postsFilter($posts,&$query) {//WP_Query
+function qtranxf_postsFilter($posts,$query) {//WP_Query
 	global $q_config;
 	//qtranxf_dbg_log('qtranxf_postsFilter: $posts: ',$posts);
 	//$post->post_content = qtranxf_useCurrentLanguageIfNotFoundShowAvailable($post->post_content);

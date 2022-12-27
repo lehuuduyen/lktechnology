@@ -17,6 +17,7 @@ function pageTopInformation()
         'id' => KEY_TOP_INFORMATION . '_title',
         'type' => 'text',
         'attributes' => array(
+            'data-cmb2-qtranslate' => true,
             'class' => 'form-control'
         )
     ));
@@ -33,6 +34,7 @@ function pageTopInformation()
         'id' => KEY_TOP_INFORMATION . '_short_description',
         'type' => 'textarea',
         'attributes' => array(
+            'data-cmb2-qtranslate' => true,
             'class' => 'form-control'
         )
     ));
