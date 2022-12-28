@@ -11,7 +11,15 @@ function pageTopService()
         'show_names' => true,
         'show_on' => array('key' => 'id', 'value' => array(getTopPageId())),
     ));
-   
+    $metaBox->add_field( array(
+        'name' => 'Title',
+        'id' => KEY_TOP_SERVICE . '_title',
+        'type' => 'text',
+        'attributes' => array(
+            'data-cmb2-qtranslate' => true,
+            'class' => 'form-control'
+        )
+    ));
     $metaBox->add_field(array(
         'name' => 'Attached Posts',
         'id' => KEY_TOP_SERVICE . '_post',

@@ -11,27 +11,30 @@ function pageTopContactGroup()
         'show_names' => true,
         'show_on' => array('key' => 'id', 'value' => array(getTopPageId())),
     ));
-    $metaBox->add_field(array(
-        'name' => 'Work time',
-        'id' => KEY_TOP_CONTACT . '_work_time',
-        'type' => 'text',
-        'attributes' => array(
-            'data-cmb2-qtranslate' => true,
-            'class' => 'form-control'
-        )
-        
-    ));
+    
     $metaBox->add_field(array(
         'name' => 'Country',
         'id' => KEY_TOP_CONTACT . '_country',
-        'type' => 'text',
+        'type' => 'wysiwyg',
         'attributes' => array(
-            'data-cmb2-qtranslate' => true,
             'class' => 'form-control'
-
-        )
+        ),
+        'options' => array(
+            'editor_class' => 'cmb2-qtranslate'
+          )
     ));
-    
+    $metaBox->add_field(array(
+        'name' => 'Work time',
+        'id' => KEY_TOP_CONTACT . '_work_time',
+        'type' => 'wysiwyg',
+        'attributes' => array(
+            'class' => 'form-control'
+        ),
+        'options' => array(
+            'editor_class' => 'cmb2-qtranslate'
+          )
+        
+    ));
     $metaBoxGroup = $metaBox->add_field(array(
         'id' => KEY_TOP_CONTACT . '_group',
         'type' => 'group',

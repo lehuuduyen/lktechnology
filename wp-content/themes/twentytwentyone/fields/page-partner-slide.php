@@ -4,14 +4,22 @@ function pagePartnerSlide()
 {
     $metaBox = new_cmb2_box(array(
         'id' => KEY_PARTNER_SLIDE . '_box',
-        'title' => 'Banner top',
+        'title' => 'Partner',
         'object_types' => POST_TYPE_PAGE,
         'context' => 'normal',
         'priority' => 'default',
         'show_names' => true,
-        'show_on' => array('key' => 'id', 'value' => array(getPartnerPageId())),
+        'show_on' => array('key' => 'id', 'value' => array(getTopPageId())),
     ));
-   
+    $metaBox->add_field( array(
+        'name' => 'Title',
+        'id' => KEY_PARTNER_SLIDE . '_title',
+        'type' => 'text',
+        'attributes' => array(
+            'data-cmb2-qtranslate' => true,
+            'class' => 'form-control'
+        )
+    ));
     $metaBox->add_field( array(
         'name' => 'List Partner',
         'desc' => '',

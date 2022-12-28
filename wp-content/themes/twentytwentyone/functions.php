@@ -19,12 +19,16 @@ define('KEY_TOP_PROJECT', 'project_slide_top');
 define('KEY_TOP_NEWS', 'news_slide_top');
 define('KEY_TOP_INFORMATION', 'information_slide_top');
 define('KEY_TOP_CONTACT', 'contact_slide_top');
+define('KEY_TOP_SOCICAL_NETWORK', 'socical_network_slide_top');
 define('POST_TYPE', 'post');
 define('POST_TYPE_PAGE', 'page');
 define('VERSION', '1.0.0');
 define('EXCERPT_LENGTH', 40);
 define('API_NAME', 'lk_tech');
+define('KEY_SUMMARY', 'post_summary');
 
+// Field post
+require_once(TEMPLATEPATH . '/fields/post-summary.php');
 
 /**
  * Require vendor
@@ -36,8 +40,8 @@ require_once(TEMPLATEPATH . '/vendor/alexis-magina/cmb2-field-post-search-ajax/c
 require_once(TEMPLATEPATH . '/vendor/webdevstudios/cmb2-attached-posts/cmb2-attached-posts-field.php');
 require_once(TEMPLATEPATH . '/cores/core.php');
 require_once(TEMPLATEPATH . '/fields/page-setting-top.php');
-require_once(TEMPLATEPATH . '/fields/page-setting-partner.php');
 require_once(TEMPLATEPATH . '/fields/page-setting-about.php');
+
 require_once(TEMPLATEPATH . '/registerPage.php');
 
 //page top
@@ -45,8 +49,9 @@ require_once(TEMPLATEPATH . '/fields/page-top-slide-top.php');
 require_once(TEMPLATEPATH . '/fields/page-top-service.php');
 require_once(TEMPLATEPATH . '/fields/page-top-information.php');
 require_once(TEMPLATEPATH . '/fields/page-top-project.php');
-require_once(TEMPLATEPATH . '/fields/page-top-news.php');
+// require_once(TEMPLATEPATH . '/fields/page-top-news.php');
 require_once(TEMPLATEPATH . '/fields/page-top-contact-group.php');
+require_once(TEMPLATEPATH . '/fields/page-top-social-network.php');
 // page partner
 require_once(TEMPLATEPATH . '/fields/page-partner-slide.php');
 // page about
@@ -79,14 +84,21 @@ function add_css_js_version( ) {
 if (isset($_GET['post']) && $_GET['post'] == get_option('top_id',true)) {
     require_once(TEMPLATEPATH . '/styleTop.php');
 }
-if (isset($_GET['post']) && $_GET['post'] == get_option('partner_id',true)) {
-    require_once(TEMPLATEPATH . '/stylePartner.php');
-}
+
 if (isset($_GET['post']) && $_GET['post'] == get_option('about_id',true)) {
     require_once(TEMPLATEPATH . '/styleAbout.php');
 }
 if ( version_compare( $GLOBALS['wp_version'], '5.3', '<' ) ) {
 	require get_template_directory() . '/inc/back-compat.php';
+}
+add_action('admin_enqueue_scripts', 'styleMain');
+function styleMain()
+{
+    if (is_admin()) {
+        wp_enqueue_style('style-main', get_template_directory_uri() . '/assets/css/main.css');
+        wp_enqueue_style('style-main');
+       
+    }
 }
 
 if ( ! function_exists( 'twenty_twenty_one_setup' ) ) {

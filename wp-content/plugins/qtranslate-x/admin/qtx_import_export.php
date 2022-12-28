@@ -59,7 +59,6 @@ function qtranxf_migrate_options_copy($nm_to,$nm_from)
 			case 'qtranslate_page_configs':
 			case 'qtranslate_admin_config':
 			case 'qtranslate_front_config':
-				continue;
 			default: break;
 		}
 		//if(strpos($name,'_flag_location')>0) continue;
