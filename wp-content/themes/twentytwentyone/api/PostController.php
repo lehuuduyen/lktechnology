@@ -42,6 +42,8 @@ class PostController extends WP_REST_Controller
             'post_status' => array('publish'),
             'order' => 'DESC',
             'category_name' => $request['slug'],
+            'posts_per_page' => $postPerPage,
+            'paged' => $page,
         );
         
      
