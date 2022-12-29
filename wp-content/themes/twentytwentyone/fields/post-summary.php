@@ -11,14 +11,17 @@ function postSummary()
         'show_names' => false,
         
     ]);
-    $metaBox->add_field([
+   
+    $metaBox->add_field(array(
         'name' => 'Summary',
         'id' => KEY_SUMMARY ,
-        'type' => 'textarea',
+        'type' => 'wysiwyg',
         'attributes' => array(
             'class' => 'form-control'
         ),
-    ]);
-  
+        'options' => array(
+            'editor_class' => 'cmb2-qtranslate'
+          )
+    ));
 }
 

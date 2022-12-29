@@ -73,6 +73,9 @@ function getAboutPageId() {
     $aboutPageId = get_option('about_id',true);
     return $aboutPageId;
 }
+function getLanguageId($value){
+	return (isset($_GET['lan']))?$_GET['lan']:$value;
+}
 function add_css_js_version( ) {
     $dateNow = date('Y-m-d');
     $version = VERSION;

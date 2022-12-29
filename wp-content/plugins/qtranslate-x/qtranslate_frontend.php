@@ -84,7 +84,8 @@ add_action('wp_head', 'qtranxf_wp_head_meta_generator');
 
 function qtranxf_wp_get_nav_menu_items( $items, $menu, $args ){
 	global $q_config;
-	$language = $q_config['language'];
+	
+	$language = getLanguageId($q_config['language']);
 	$itemid = 0;
 	$menu_order = 0;
 	$itemsremoved = array();
@@ -964,7 +965,7 @@ function qtranxf_translate_metadata($meta_type, $original_value, $object_id, $me
 function qtranxf_filter_postmeta($original_value, $object_id, $meta_key = '', $single = false){
 	return qtranxf_translate_metadata('post', $original_value, $object_id, $meta_key, $single);
 }
-add_filter('get_post_metadata', 'qtranxf_filter_postmeta', 5, 4);
+// add_filter('get_post_metadata', 'qtranxf_filter_postmeta', 5, 4);
 
 /**
  * @since 3.2.9.9.6

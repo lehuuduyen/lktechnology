@@ -35,9 +35,6 @@ class MenuController extends WP_REST_Controller
     function wp_get_menu_array($current_menu)
     {
         $array_menu = wp_get_nav_menu_items($current_menu);
-       
-        
-
         $menu = array();
         $count = 0;
         if (is_array($array_menu)) {
