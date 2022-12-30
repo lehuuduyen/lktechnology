@@ -18,6 +18,7 @@ define('KEY_TOP_SERVICE', 'service_slide_top');
 define('KEY_TOP_PROJECT', 'project_slide_top');
 define('KEY_TOP_NEWS', 'news_slide_top');
 define('KEY_TOP_INFORMATION', 'information_slide_top');
+define('KEY_LIST_IMAGES', 'post_images');
 define('KEY_TOP_CONTACT', 'contact_slide_top');
 define('KEY_TOP_SOCICAL_NETWORK', 'socical_network_slide_top');
 define('POST_TYPE', 'post');
@@ -29,6 +30,7 @@ define('KEY_SUMMARY', 'post_summary');
 
 // Field post
 require_once(TEMPLATEPATH . '/fields/post-summary.php');
+require_once(TEMPLATEPATH . '/fields/post-list-images.php');
 
 /**
  * Require vendor
