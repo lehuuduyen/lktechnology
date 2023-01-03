@@ -48,7 +48,7 @@ function pageTopContactGroup()
         ),
     ));
     $metaBox->add_group_field($metaBoxGroup, array(
-        'name' => 'title',
+        'name' => 'Title',
         'id' => KEY_TOP_CONTACT . '_title',
         'type' => 'text',
         'attributes' => array(

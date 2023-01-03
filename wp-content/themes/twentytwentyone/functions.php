@@ -12,6 +12,9 @@
 // This theme requires WordPress 5.3 or later.
 
 define('KEY_ABOUT_SLIDE', 'about_slide_top');
+define('KEY_ABOUT_SPECICAL', 'about_slide_special');
+define('KEY_ABOUT_MISSION_BUSINESS', 'about_slide_mission_business');
+define('KEY_ABOUT_PHILOSOPHY_BUSINESS', 'about_slide_philosophy_business');
 define('KEY_TOP_SLIDE_TOP', 'banner_slide_top');
 define('KEY_PARTNER_SLIDE', 'partner_slide');
 define('KEY_TOP_SERVICE', 'service_slide_top');
@@ -58,6 +61,9 @@ require_once(TEMPLATEPATH . '/fields/page-top-social-network.php');
 require_once(TEMPLATEPATH . '/fields/page-partner-slide.php');
 // page about
 require_once(TEMPLATEPATH . '/fields/page-about-slide.php');
+require_once(TEMPLATEPATH . '/fields/page-about-specical.php');
+require_once(TEMPLATEPATH . '/fields/page-about-philosophy-business.php');
+require_once(TEMPLATEPATH . '/fields/page-about-mission-business.php');
 
 //api 
 require_once(TEMPLATEPATH . '/api/PostController.php');
