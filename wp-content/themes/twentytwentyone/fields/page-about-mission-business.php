@@ -22,7 +22,7 @@ function pageAboutMissionBusiness()
         ),
     ));
     $metaBoxGroup = $metaBox->add_field(array(
-        'id' => KEY_ABOUT_SPECICAL . '_group',
+        'id' => KEY_ABOUT_MISSION_BUSINESS . '_group',
         'type' => 'group',
         'options' => array(
             'group_title' => 'Group {#}',
@@ -35,7 +35,7 @@ function pageAboutMissionBusiness()
     ));
     $metaBox->add_group_field($metaBoxGroup, array(
         'name' => 'Title',
-        'id' => KEY_ABOUT_SPECICAL . '_group_title',
+        'id' => KEY_ABOUT_MISSION_BUSINESS . '_group_title',
         'type' => 'text',
         'attributes' => array(
             'class' => 'form-control',
@@ -46,7 +46,7 @@ function pageAboutMissionBusiness()
     
     $metaBox->add_group_field($metaBoxGroup, array(
         'name' => 'Summary',
-        'id' => KEY_ABOUT_SPECICAL . '_group_summary',
+        'id' => KEY_ABOUT_MISSION_BUSINESS . '_group_summary',
         'type' => 'textarea',
         'attributes' => array(
             'class' => 'form-control',

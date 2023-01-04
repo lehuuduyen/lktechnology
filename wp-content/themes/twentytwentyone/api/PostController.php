@@ -10,6 +10,12 @@ class PostController extends WP_REST_Controller
                 'callback' => array($this, 'getTop')
             ),
         ));
+        register_rest_route($this->nameSpace, 'about', array(
+            array(
+                'methods' => 'GET',
+                'callback' => array($this, 'getAbout')
+            ),
+        ));
         register_rest_route($this->nameSpace, 'posts-category/(?P<category>[a-zA-Z0-9-_]+)', array(
             array(
                 'methods' => 'GET',
@@ -105,7 +111,7 @@ class PostController extends WP_REST_Controller
                 $results['data'][$key] = [
                     'title' => $getTitle,
                     'slug' => get_post_field('post_name', get_the_ID()),
-                    'content' => getExcerpt(get_the_excerpt(), EXCERPT_LENGTH),
+                    'location' =>  get_post_meta(get_the_ID(), KEY_SUMMARY . '_location', true),
                     'thumbnail' => has_post_thumbnail() ? get_the_post_thumbnail_url() : '',
                     'date' => get_the_date('Y/m/d')
                 ];
@@ -119,11 +125,10 @@ class PostController extends WP_REST_Controller
                 'post_per_page' => $postPerPage,
             ];
             wp_reset_postdata();
+            return new WP_REST_Response($results, 200);
+        } else {
+            return new WP_Error('no_posts', __('No post found'), array('status' => 404));
         }
-
-
-
-        return new WP_REST_Response($results, 200);
     }
     public function getTop()
     {
@@ -288,6 +293,182 @@ class PostController extends WP_REST_Controller
             }
         }
         $results['socical_network'] = $data;
+       
+        
+
+        $data = [];
+
+        $data['country'] = isset($topPage['contact_slide_top_country']) ?  qtranxf_use($language, $topPage['contact_slide_top_country'][0], true, true) : "";
+        $data['work_time'] = isset($topPage['contact_slide_top_work_time']) ?  qtranxf_use($language, $topPage['contact_slide_top_work_time'][0], true, true) : "";
+        if (isset($topPage['contact_slide_top_group'])) {
+            $slideTops = [];
+            $tempSlideTop = [];
+            $listSlideTop = unserialize($topPage['contact_slide_top_group'][0]);
+           
+            
+
+            foreach ($listSlideTop as $keySlideTop => $special) {
+                $tempArr = [
+                    'title' => qtranxf_use($language, $special['contact_slide_top_title'], true, true),
+                    'mobile' => $special['contact_slide_top_mobile'],
+                    'email' => $special['contact_slide_top_email'],
+                    'address' => $special['contact_slide_top_address'],
+                ];
+
+                $data['list'][] = $tempArr;
+            }
+        }
+        
+        $results['contact'] = $data;
+        
+        return new WP_REST_Response(['code' => 'success', 'data' => $results], 200);
+    }
+
+    public function getAbout()
+    {
+        $language = getLanguageId(qtranxf_getLanguage());
+        $aboutPage = get_post_meta(getAboutPageId());
+
+        $data = [];
+
+        $data['title'] = isset($aboutPage['about_slide_top_title']) ?  qtranxf_use($language, $aboutPage['about_slide_top_title'][0], true, true) : "";
+        $data['long_description'] = isset($aboutPage['about_slide_top_description_long']) ?  qtranxf_use($language, $aboutPage['about_slide_top_description_long'][0], true, true) : "";
+        $data['short_description'] = isset($aboutPage['about_slide_top_description_short']) ?  qtranxf_use($language, $aboutPage['about_slide_top_description_short'][0], true, true) : "";
+        $data['image'] = isset($aboutPage['about_slide_top_image']) ? $aboutPage['about_slide_top_image'][0] : "";
+        $data['profile_download'] = isset($aboutPage['about_slide_top_download_profile']) ? $aboutPage['about_slide_top_download_profile'][0] : "";
+        $results['header'] = $data;
+
+
+
+        $data = [];
+        if (isset($aboutPage['about_slide_special_group'])) {
+            $slideTops = [];
+            $tempSlideTop = [];
+            $listSlideTop = unserialize($aboutPage['about_slide_special_group'][0]);
+
+
+            foreach ($listSlideTop as $keySlideTop => $special) {
+                $tempArr = [
+                    'number' => $special['about_slide_special_number'],
+                    'title' => qtranxf_use($language, $special['about_slide_special_title'], true, true),
+                    'summary' => qtranxf_use($language, $special['about_slide_special_summary'], true, true),
+                    'icon' => $special['about_slide_special_icon'],
+                ];
+
+                $data[] = $tempArr;
+            }
+        }
+        $results['specical'] = $data;
+
+        $data = [];
+
+        $data['title'] = isset($aboutPage['about_slide_philosophy_business_title']) ?  qtranxf_use($language, $aboutPage['about_slide_philosophy_business_title'][0], true, true) : "";
+        $data['description'] = isset($aboutPage['about_slide_philosophy_business_description']) ?  qtranxf_use($language, $aboutPage['about_slide_philosophy_business_description'][0], true, true) : "";
+        $data['image'] = isset($aboutPage['about_slide_philosophy_business_image']) ? $aboutPage['about_slide_philosophy_business_image'][0] : "";
+        $results['philosophy_business'] = $data;
+
+
+        $data = [];
+
+        $data['title'] = isset($aboutPage['about_slide_mission_business_title']) ?  qtranxf_use($language, $aboutPage['about_slide_mission_business_title'][0], true, true) : "";
+        if (isset($aboutPage['about_slide_mission_business_group'])) {
+            $slideTops = [];
+            $tempSlideTop = [];
+            $listSlideTop = unserialize($aboutPage['about_slide_mission_business_group'][0]);
+
+
+            foreach ($listSlideTop as $keySlideTop => $special) {
+                $tempArr = [
+                    'title' => qtranxf_use($language, $special['about_slide_mission_business_group_title'], true, true),
+                    'summary' => qtranxf_use($language, $special['about_slide_mission_business_group_summary'], true, true),
+                ];
+
+                $data['list'][] = $tempArr;
+            }
+        }
+        $results['mission_business'] = $data;
+
+
+        $data = [];
+        $data2 = [];
+
+        $data['title'] = isset($aboutPage['service_slide_about_title']) ?  qtranxf_use($language, $aboutPage['service_slide_about_title'][0], true, true) : "";
+        $data['thumbnail_about'] = isset($aboutPage['service_slide_about_thumbnail']) ?  $aboutPage['service_slide_about_thumbnail'][0] : "";
+        if (isset($aboutPage['service_slide_about_post'])) {
+            $slideTops = [];
+            $tempSlideTop = [];
+            $listSlideTop = unserialize($aboutPage['service_slide_about_post'][0]);
+
+
+            $listSlideTop = array_slice($listSlideTop, 0, 10);
+            $listSlideTops = get_posts([
+                'include' => $listSlideTop,
+                'order' => 'ASC',
+                'orderby' => 'post__in'
+            ]);
+            foreach ($listSlideTops as $key => $val) {
+                if (isset($val->ID)) {
+                    $tempSlideTop[$val->ID] = $val;
+                }
+            }
+
+
+            foreach ($listSlideTop as $val) {
+                if (isset($tempSlideTop[$val])) {
+                    $slideTops[] = $tempSlideTop[$val];
+                }
+            }
+
+            foreach ($slideTops as $keySlideTop => $post) {
+                $summary = qtranxf_use($language, get_post_meta($post->ID, 'post_summary', true), true, true);
+                $icon = get_post_meta($post->ID, 'post_images_icon', true);
+
+                $tempArr = [
+                    'title' => qtranxf_use($language, $post->post_title, true, true),
+                    'summary' => $summary,
+                    'icon' => $icon,
+
+                ];
+                $listImage = get_post_meta($post->ID, KEY_LIST_IMAGES . '_list', true);
+                if ($listImage) {
+                    $listImage = array_values($listImage);
+                }else{
+                    $listImage = [];
+                }
+                
+                $tempArr2 = [
+                    'title' => qtranxf_use($language, $post->post_title, true, true),
+                    'content' => qtranxf_use($language, $post->post_content, true, true),
+                    'images' => $listImage,
+
+                ];
+
+                $data['list'][] = $tempArr;
+                $data2[] = $tempArr2;
+            }
+        }
+        $results['service'] = $data;
+        $results['service_detail'] = $data2;
+
+        
+
+        $data = [];
+
+        $topPage = get_post_meta(getTopPageId());
+
+        $data['title'] = isset($topPage['partner_slide_title']) ?  qtranxf_use($language, $topPage['partner_slide_title'][0], true, true) : "";
+
+        if (isset($topPage['partner_slide_list'])) {
+            $listSlidePartner = unserialize($topPage['partner_slide_list'][0]);
+            $data['list'] = array_slice($listSlidePartner, 0);
+        }
+        $results['partner'] = $data;
+        $data = [];
+        $data['title'] = isset($aboutPage['about_slide_technology_in_dochina_title']) ?  qtranxf_use($language, $aboutPage['about_slide_technology_in_dochina_title'][0], true, true) : "";
+        $data['image'] = isset($aboutPage['about_slide_technology_in_dochina_image']) ?  $aboutPage['about_slide_technology_in_dochina_image'][0] : "";
+        $results['technology'] = $data;
+
+        
 
         return new WP_REST_Response(['code' => 'success', 'data' => $results], 200);
     }

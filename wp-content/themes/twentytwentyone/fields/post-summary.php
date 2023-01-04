@@ -8,10 +8,17 @@ function postSummary()
         'object_types' => POST_TYPE,
         'context' => 'normal',
         'priority' => 'default',
-        'show_names' => false,
+        'show_names' => true,
         
     ]);
-   
+    $metaBox->add_field( array(
+        'name' => 'Location',
+        'id' => KEY_SUMMARY . '_location',
+        'type' => 'text',
+        'attributes' => array(
+            'class' => 'form-control'
+        )
+    ));
     $metaBox->add_field(array(
         'name' => 'Summary',
         'id' => KEY_SUMMARY ,

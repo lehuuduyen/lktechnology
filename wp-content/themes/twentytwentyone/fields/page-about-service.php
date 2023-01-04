@@ -1,10 +1,10 @@
 <?php
-add_action('cmb2_init', 'pageAboutPhilosophyBusiness');
-function pageAboutPhilosophyBusiness()
+add_action('cmb2_init', 'pageAboutService');
+function pageAboutService()
 {
     $metaBox = new_cmb2_box(array(
-        'id' => KEY_ABOUT_PHILOSOPHY_BUSINESS . '_box',
-        'title' => "Philosophy Business",
+        'id' => KEY_ABOUT_SERVICE . '_box',
+        'title' => 'Service',
         'object_types' => POST_TYPE_PAGE,
         'context' => 'normal',
         'priority' => 'default',
@@ -13,29 +13,17 @@ function pageAboutPhilosophyBusiness()
     ));
     $metaBox->add_field( array(
         'name' => 'Title',
-        'id' => KEY_ABOUT_PHILOSOPHY_BUSINESS . '_title',
+        'id' => KEY_ABOUT_SERVICE . '_title',
         'type' => 'text',
         'attributes' => array(
             'data-cmb2-qtranslate' => true,
             'class' => 'form-control'
-        ),
-    ));
-    $metaBox->add_field(array(
-        'name' => 'Description',
-        'id' => KEY_ABOUT_PHILOSOPHY_BUSINESS . '_description',
-        'type' => 'wysiwyg',
-        'attributes' => array(
-            'class' => 'form-control'
-        ),
-        'options' => array(
-            'editor_class' => 'cmb2-qtranslate'
-          )
-        
+        )
     ));
     $metaBox->add_field( array(
-        'name'    => 'Image',
+        'name'    => 'Thumbnail about',
         // 'desc'    => 'Upload an image or enter an URL.',
-        'id'      => KEY_ABOUT_PHILOSOPHY_BUSINESS . '_image',
+        'id'      => KEY_ABOUT_SERVICE . '_thumbnail',
         'type'    => 'file',
         // Optional:
         'options' => array(
@@ -56,7 +44,23 @@ function pageAboutPhilosophyBusiness()
         ),
         'preview_size' => 'large', // Image size to use when previewing in the admin.
     ) );
-
-   
-    
+    $metaBox->add_field(array(
+        'name' => 'Attached Posts',
+        'id' => KEY_ABOUT_SERVICE . '_post',
+        'desc' => '表示枠は最大８とし、デフォルトは表示枠１のものを表示する。',
+        'type' => 'custom_attached_posts',
+        'column' => true,
+        'options' => array(
+            'show_thumbnails' => true,
+            'filter_boxes' => true,
+            'query_args' => array(
+                'posts_per_page' => 10,
+                'post_type' => 'post',
+                'post_status' => ['publish'],
+                'cat' => get_cat_ID("service"),
+                'meta_compare' => 'EXISTS',
+            ),
+        ),
+    ));
 }
+?>

@@ -1,10 +1,10 @@
 <?php
-add_action('cmb2_init', 'pageAboutPhilosophyBusiness');
-function pageAboutPhilosophyBusiness()
+add_action('cmb2_init', 'pageAboutTechnologyInDochina');
+function pageAboutTechnologyInDochina()
 {
     $metaBox = new_cmb2_box(array(
-        'id' => KEY_ABOUT_PHILOSOPHY_BUSINESS . '_box',
-        'title' => "Philosophy Business",
+        'id' => KEY_ABOUT_TECHNOLOGY_IN_DOCHINA . '_box',
+        'title' => "Technology in dochina",
         'object_types' => POST_TYPE_PAGE,
         'context' => 'normal',
         'priority' => 'default',
@@ -13,29 +13,18 @@ function pageAboutPhilosophyBusiness()
     ));
     $metaBox->add_field( array(
         'name' => 'Title',
-        'id' => KEY_ABOUT_PHILOSOPHY_BUSINESS . '_title',
+        'id' => KEY_ABOUT_TECHNOLOGY_IN_DOCHINA . '_title',
         'type' => 'text',
         'attributes' => array(
             'data-cmb2-qtranslate' => true,
             'class' => 'form-control'
         ),
     ));
-    $metaBox->add_field(array(
-        'name' => 'Description',
-        'id' => KEY_ABOUT_PHILOSOPHY_BUSINESS . '_description',
-        'type' => 'wysiwyg',
-        'attributes' => array(
-            'class' => 'form-control'
-        ),
-        'options' => array(
-            'editor_class' => 'cmb2-qtranslate'
-          )
-        
-    ));
+    
     $metaBox->add_field( array(
         'name'    => 'Image',
         // 'desc'    => 'Upload an image or enter an URL.',
-        'id'      => KEY_ABOUT_PHILOSOPHY_BUSINESS . '_image',
+        'id'      => KEY_ABOUT_TECHNOLOGY_IN_DOCHINA . '_image',
         'type'    => 'file',
         // Optional:
         'options' => array(
